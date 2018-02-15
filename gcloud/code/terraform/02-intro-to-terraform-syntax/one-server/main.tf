@@ -1,14 +1,16 @@
 provider "google" {
-  project     = "terraform-up-and-running-code"
+  project = "terraform-up-and-running-code"
+
   # credentials = GOOGLE_CREDENTIALS
   region = "us-central1"
 }
 
 resource "google_compute_instance" "example" {
-  name = "terraform-example"
-  machine_type  = "f1-micro"
-  zone = "us-central1-a"
-   boot_disk {
+  name         = "terraform-example"
+  machine_type = "f1-micro"
+  zone         = "us-central1-a"
+
+  boot_disk {
     initialize_params {
       image = "ubuntu-1604-lts"
     }
@@ -21,5 +23,6 @@ resource "google_compute_instance" "example" {
       // Ephemeral IP
     }
   }
+
   tags = ["terraform-example"]
 }
